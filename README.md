@@ -1,112 +1,151 @@
 # Stack Machine Go
 
-This is a Go port of the Stack Machine project originally created by Christian Stigen Larsen in 2010. The original project is available at [csl.sublevel3.org](http://csl.sublevel3.org).
+A stack-based virtual machine and compiler written in Go.
+
+[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
 ## Overview
 
-Stack Machine Go is a simple stack-based virtual machine that can run Forth/PostScript-like programs. It includes:
+Stack Machine Go is a lightweight, stack-based virtual machine that executes simple programs in a Forth/PostScript-like language. It consists of:
 
-- A virtual machine for executing low-level stack-based instructions
-- An assembler supporting a Forth-like language
-- An interpreter for running programs on-the-fly
-- A disassembler for inspecting compiled bytecode
+- A virtual machine (VM) that executes bytecode
+- A compiler that translates assembly-like source code to bytecode
+- An interpreter that compiles and runs code on-the-fly
+- A disassembler that converts bytecode back to human-readable form
+
+This project is a Go port of the original Stack Machine created by Christian Stigen Larsen in 2010-2011.
+
+## Features
+
+- Simple but powerful instruction set
+- Stack-based execution model
+- Memory manipulation
+- Branching and function calls
+- Input/output operations
+- Label-based addressing
 
 ## Installation
 
-With Go installed, you can install the stack machine with:
+### Prerequisites
+
+- Go 1.18 or higher
+
+### Building from Source
 
 ```bash
-go get github.com/yourusername/stack-machine-go
+git clone https://github.com/matt-dunleavy/go-vm.git
+cd go-vm
+go build -o stackmachine
 ```
 
-Or clone the repository and build from source:
+Alternatively, use the provided Makefile:
 
 ```bash
-git clone https://github.com/yourusername/stack-machine-go.git
-cd stack-machine-go
-go build
+make build
 ```
 
 ## Usage
 
-The stack machine has four main commands:
+Stack Machine Go has several commands:
 
-- `interpret` (alias: `sm`): Compile and run source on-the-fly
-- `compile` (alias: `smc`): Compile source to bytecode
-- `run` (alias: `smr`): Run compiled bytecode
-- `disassemble` (alias: `smd`): Disassemble bytecode
+### Compile Source to Bytecode
 
-### Examples
-
-Interpret a file:
 ```bash
-stackmachine interpret examples/hello.src
-# or
-stackmachine sm examples/hello.src
+stackmachine compile hello.src
+# Outputs hello.bin
 ```
 
-Compile a file:
-```bash
-stackmachine compile examples/hello.src
-# or
-stackmachine smc examples/hello.src
-```
+### Run Compiled Bytecode
 
-Run a compiled file:
 ```bash
 stackmachine run hello.bin
-# or
-stackmachine smr hello.bin
 ```
 
-Disassemble a compiled file:
+### Interpret Source Code Directly
+
+```bash
+stackmachine interpret hello.src
+```
+
+### Disassemble Bytecode
+
 ```bash
 stackmachine disassemble hello.bin
-# or
-stackmachine smd hello.bin
 ```
 
-## The Stack Machine Language
+### Using Standard Input/Output
 
-The stack machine language is similar to Forth and PostScript, using reverse Polish notation (RPN). Here's a simple "Hello, World!" example:
+All commands accept input from stdin if no file is specified:
 
-```
-; Hello, World!
-main:
-   72 out          ; "H"
-  101 out          ; "e"
-  108 dup out out  ; "ll"
-  111 out          ; "o"
-   44 out          ; ","
-   32 out          ; " "
-   87 out          ; "W"
-  111 out          ; "o"
-  114 out          ; "r"
-  108 out          ; "l"
-  100 out          ; "d"
-   33 out          ; "!"
-  '\n' out         ; newline
-  halt
+```bash
+cat hello.src | stackmachine interpret
 ```
 
-### Key Concepts
+## Source Code Examples
 
-1. **Labels**: Identifiers ending with a colon
-   ```
-   label:      ; define a label
-   &label      ; put ADDRESS of label on stack
-   &label LOAD ; put VALUE of label on stack
-   label       ; EXECUTE code at label position
-   ```
+### Hello World
 
-2. **Operations**: Stack-based operations like ADD, SUB, AND, etc.
+```
+; Hello World program
+'H OUT
+'e OUT
+'l OUT
+'l OUT
+'o OUT
+', OUT
+' OUT
+'W OUT
+'o OUT
+'r OUT
+'l OUT
+'d OUT
+'! OUT
+'\n OUT
+HALT
+```
 
-3. **Character literals**: 'a', '\n', etc.
+### Simple Function Call
 
-4. **Function calls**: Labels can be used as function calls with automatic return via POPIP
+```
+; Main program
+'H OUT
+'i OUT
+'! OUT
+' OUT
+PUSHIP 24  ; Push return address
+32         ; Call function at address 32
+JMP        ; Jump to function
+'\n OUT    ; Print newline after return
+HALT       ; End program
 
-For more detail, see the [original documentation](http://csl.sublevel3.org/stack-machine/).
+; Function that prints "there"
+'t OUT     ; Print "there"
+'h OUT
+'e OUT
+'r OUT
+'e OUT
+POPIP      ; Return to caller
+```
+
+## Architecture
+
+The Stack Machine is based on a simple stack-based architecture:
+
+- Operations operate on a data stack
+- A separate instruction pointer (IP) stack enables function calls
+- Memory is organized as a flat array of 32-bit words
+- Instructions are encoded as 32-bit words
+
+See the [docs](./docs/) directory for detailed documentation on the architecture, instruction set, and compiler.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is placed in the public domain, following the original work by Christian Stigen Larsen.
+This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Original Stack Machine by Christian Stigen Larsen
