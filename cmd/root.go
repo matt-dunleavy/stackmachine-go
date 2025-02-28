@@ -12,10 +12,7 @@ var rootCmd = &cobra.Command{
 	Short: "A stack-based virtual machine",
 	Long: `Stack Machine is a simple stack-based virtual machine that can run 
 Forth/PostScript-like programs. It includes an assembler, interpreter, and 
-execution environment.
-
-Originally made in 2010 by Christian Stigen Larsen, this Go port supports the
-same functionality.`,
+execution environment.`,
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
