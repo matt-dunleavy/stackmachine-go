@@ -1,11 +1,11 @@
 #!/bin/bash
-# release.sh - Release script for smg (Go Virtual Machine)
+# release.sh - Release script for smg (Stack Machine Go)
 
 set -e
 
 # Default values
 VERSION=""
-OUTPUT_DIR="release"
+OUTPUT_DIR="dist"
 PLATFORMS="linux/amd64,darwin/amd64,windows/amd64"
 SKIP_TESTS=0
 SKIP_TAG=0
@@ -23,7 +23,7 @@ usage() {
     echo
     echo "Options:"
     echo "  -v, --version VERSION  Version to release (required)"
-    echo "  -o, --output DIR       Output directory (default: release)"
+    echo "  -o, --output DIR       Output directory (default: dist)"
     echo "  -p, --platforms LIST   Comma-separated list of platforms to build for"
     echo "                         Format: os/arch (default: linux/amd64,darwin/amd64,windows/amd64)"
     echo "  -s, --skip-tests       Skip running tests"
@@ -98,18 +98,15 @@ else
 fi
 
 # Create release directory
-RELEASE_DIR="$OUTPUT_DIR/v$VERSION"
-mkdir -p "$RELEASE_DIR"
+mkdir -p "$OUTPUT_DIR"
 
-# Build for all platforms
-echo -e "${BLUE}Building for all platforms...${NC}"
-./scripts/build.sh --mode release --output "$RELEASE_DIR" --platforms "$PLATFORMS"
+# Build release binaries
+echo -e "${BLUE}Building release binaries...${NC}"
+./scripts/build.sh --mode release --output "$OUTPUT_DIR" --platforms "$PLATFORMS"
 
-# Create checksums
-echo -e "${BLUE}Creating checksums...${NC}"
-cd "$RELEASE_DIR"
-sha256sum * > checksums.txt
-cd - > /dev/null
+# Create release archive
+echo -e "${BLUE}Creating release archive...${NC}"
+tar -czf "$OUTPUT_DIR/smg-$VERSION.tar.gz" -C "$OUTPUT_DIR" .
 
 # Create git tag if not skipped
 if [[ $SKIP_TAG -eq 0 ]]; then
@@ -122,4 +119,4 @@ else
 fi
 
 echo -e "${GREEN}Release v$VERSION created successfully!${NC}"
-echo -e "${BLUE}Release files are available in: $RELEASE_DIR${NC}" 
+echo -e "${BLUE}Release files are available in: $OUTPUT_DIR${NC}" 

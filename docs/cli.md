@@ -148,4 +148,4 @@ When errors occur during compilation or execution:
 
 ## Environment
 
-The Stack Machine commands do not depend on environment variables or configuration files. All behavior is controlled through command-line arguments. 
+The Stack Machine commands do not depend on environment variables or configuration files. All behavior is controlled through command-line arguments.
