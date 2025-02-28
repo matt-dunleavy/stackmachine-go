@@ -28,7 +28,7 @@ If no files are specified, input is read from standard input.`,
 			}
 		}
 	},
-	Aliases: []string{"sm"},
+	Aliases: []string{"smi"},
 }
 
 func init() {

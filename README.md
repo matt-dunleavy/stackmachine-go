@@ -140,6 +140,4 @@ See the [docs](./docs/) directory for more detailed documentation on the archite
 
 This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
-
-- Original [Stack Machine]([GitHub - cslarsen/stack-machine: A simple stack-based virtual machine in C++ with a Forth like programming language](https://github.com/cslarsen/stack-machine)) (C++) by [Christian Stigen Larsen]([cslarsen (Christian Stigen Larsen) · GitHub](https://github.com/cslarsen))
+# 

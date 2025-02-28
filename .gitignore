@@ -1,10 +1,8 @@
 # Build directories
 build/
-bin/
 lib/
 out/
 cmake-build-*/
-test/testdata/
 
 # IDE files
 .idea/

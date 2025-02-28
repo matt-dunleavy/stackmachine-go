@@ -8,7 +8,7 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "stackmachine",
+	Use:   "smg",
 	Short: "A stack-based virtual machine",
 	Long: `Stack Machine is a simple stack-based virtual machine that can run 
 Forth/PostScript-like programs. It includes an assembler, interpreter, and 

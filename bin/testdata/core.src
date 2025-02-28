@@ -1,0 +1,125 @@
+; Some helpful functions that can be implemented
+; by primitives
+
+; only parse this code, don't execute it
+&inc-core jmp
+
+_nop:  ; do nothing
+  popip
+
+_jnz:
+  not jz
+  popip
+
+_jmp:
+  0 jz
+
+_swap:          ; ( a b -- b a)
+  swap-a: nop   ; placeholder for a
+  swap-b: nop   ; placeholder for b
+  load &swap-b  ; pop to b
+  load &swap-a  ; pop to a
+  push &swap-a  ; push a
+  push &swap-b  ; push b
+  popip
+
+_dup:           ; ( a -- a a )
+  nop           ; placeholder <- nop
+  &_dup stor ; placeholder <- a
+  &_dup load ; tos <- a
+  &_dup load ; tos <- a
+  popip
+
+_sub-two's-complementB: ; ( a b -- (b-a))
+  swap  ; b a
+  compl ; b ~a
+  1 add ; b (~a+1), or b -a
+  add   ; b-a
+  popip
+
+_rol3: ; ( a b c -- b c a )
+  rol3-var: nop  ; stack = a b c
+  &rol3-var stor ; stack = a b, var = c
+  swap           ; stack = b a, var = c
+  &rol3-var load ; stack = b a c
+  swap           ; stack = b c a
+  popip
+
++:              ; ( a b -- (a+b) )
+  add           ; 32-bit native addition
+  popip
+
+-:              ; ( a b -- (b-a) )
+  sub           ; 32-bit native subtraction
+  popip
+
+*:              ; ( a b -- (a*b) )
+  mul           ; 32-bit native multiplication
+  popip
+
+-1:             ; ( a -- (a-1))
+  1 swap sub
+  popip
+
++1:             ; ( a -- (a+1))
+  1 add
+  popip
+
+mul:            ; ( a b -- (a*b) )
+  mul-res: nop  ; placeholder for result
+  mul-cnt: nop  ; placeholder for counter
+  mul-num: nop
+
+  &mul-cnt stor ; b to cnt
+  dup
+  &mul-res stor ; a to res
+  &mul-num stor ; and to num
+
+  mul-loop:
+    ; calculate res += a
+    &mul-res load
+    &mul-num load +
+    &mul-res stor
+
+    ; decrement counter
+    &mul-cnt load
+    -1
+    &mul-cnt stor
+
+    ; loop until counter is zero
+    &mul-cnt load
+    &mul-loop swap -1 jnz
+
+  &mul-res load
+  popip
+
+&:              ; ( a b -- (a AND b) )
+  and           ; 32-bit bitwise AND operation
+  popip
+
+|:              ; ( a b -- (a OR b) )
+  or            ; 32-bit bitwise OR operation
+  popip
+
+^:              ; ( a b -- (a XOR b) )
+  xor           ; 32-bit bitwise EXCLUSIVE OR operation
+  popip
+
+~:              ; ( a -- complement of a )
+  not           ; 32-bit bitwise COMPLEMENT OF A
+  popip
+
+<:              ; ( -- a )
+  in            ; read 8-bit to LSB of 32-bit value from input stream
+  popip
+
+>:              ; ( a -- )
+  out           ; write 8-bit to LSB of 32-bit value to output stream
+  popip
+
+@:              ; ( address -- value at address )
+  load
+  popip
+
+inc-core:
+  nop
