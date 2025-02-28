@@ -1,0 +1,77 @@
+# Build directories
+build/
+bin/
+lib/
+out/
+cmake-build-*/
+test/testdata/
+
+# IDE files
+.idea/
+.vscode/
+.vs/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps/
+
+# Dependency directories
+vcpkg_installed/
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Coverage files
+*.gcno
+*.gcda
+*.gcov
+coverage.info
+coverage_report/
+
+# Temporary files
+temp/
+tmp/
+logs/
+.workspace/
+.workspace/*
