@@ -138,6 +138,8 @@ See the [docs](./docs/) directory for more detailed documentation on the archite
 
 ## License
 
-This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details. The original Stack Machine was placed in the public domain by its author, Christian Stigen Larsen.
 
-# 
+## Acknowledgments
+
+- Original [Stack Machine](https://github.com/cslarsen/stack-machine) (C++) by [Christian Stigen Larsen](https://github.com/cslarsen)
