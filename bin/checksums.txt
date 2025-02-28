@@ -1,0 +1,3 @@
+b29f8f7326c373339088cc9fd7e4d0ae36e769427cfc5da5f173edc6ac301b8d  dist/smg-linux-amd64
+dc9a4366bc6787c214c4405db7e5d83c49c2f580ee04f289eced8264bfbb8924  dist/smg-darwin-amd64
+1d212669ddeb698fffdf0906cdcaabc13684086a07a6ec3ec14645c6d485105d  dist/smg-windows-amd64.exe
