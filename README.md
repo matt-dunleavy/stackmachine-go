@@ -4,7 +4,7 @@
 
 ## Overview
 
-A stack-based virtual machine and compiler written in Go. This is a port of a [Stack Machine]([GitHub - cslarsen/stack-machine: A simple stack-based virtual machine in C++ with a Forth like programming language](https://github.com/cslarsen/stack-machine)) written in C++ by Christian Stigen Larsen.
+A stack-based virtual machine and compiler written in Go. This is a port of a [Stack Machine](https://github.com/cslarsen/stack-machine) written in C++ by Christian Stigen Larsen.
 
 Stack Machine Go is a lightweight, stack-based virtual machine that executes simple programs in a Forth/PostScript-like language. It consists of:
 
