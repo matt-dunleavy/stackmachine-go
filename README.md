@@ -1,10 +1,10 @@
-# Stack Machine Go
-
-A stack-based virtual machine and compiler written in Go.
+# Stack Machine Go (smg)
 
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
 ## Overview
+
+A stack-based virtual machine and compiler written in Go. This is a port of a [Stack Machine]([GitHub - cslarsen/stack-machine: A simple stack-based virtual machine in C++ with a Forth like programming language](https://github.com/cslarsen/stack-machine)) written in C++ by Christian Stigen Larsen.
 
 Stack Machine Go is a lightweight, stack-based virtual machine that executes simple programs in a Forth/PostScript-like language. It consists of:
 
@@ -12,8 +12,6 @@ Stack Machine Go is a lightweight, stack-based virtual machine that executes sim
 - A compiler that translates assembly-like source code to bytecode
 - An interpreter that compiles and runs code on-the-fly
 - A disassembler that converts bytecode back to human-readable form
-
-This project is a Go port of the original Stack Machine created by Christian Stigen Larsen in 2010-2011.
 
 ## Features
 
@@ -34,8 +32,8 @@ This project is a Go port of the original Stack Machine created by Christian Sti
 
 ```bash
 git clone https://github.com/matt-dunleavy/stackmachine-go.git
-cd go-vm
-go build -o stackmachine
+cd smg
+go build -o smg
 ```
 
 Alternatively, use the provided Makefile:
@@ -136,11 +134,7 @@ The Stack Machine is based on a simple stack-based architecture:
 - Memory is organized as a flat array of 32-bit words
 - Instructions are encoded as 32-bit words
 
-See the [docs](./docs/) directory for detailed documentation on the architecture, instruction set, and compiler.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+See the [docs](./docs/) directory for more detailed documentation on the architecture, instruction set, and compiler.
 
 ## License
 
@@ -148,4 +142,4 @@ This project is licensed under the ISC License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-- Original Stack Machine by Christian Stigen Larsen
+- Original [Stack Machine]([GitHub - cslarsen/stack-machine: A simple stack-based virtual machine in C++ with a Forth like programming language](https://github.com/cslarsen/stack-machine)) (C++) by [Christian Stigen Larsen]([cslarsen (Christian Stigen Larsen) · GitHub](https://github.com/cslarsen))

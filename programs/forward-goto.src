@@ -1,0 +1,27 @@
+; simple test of forward labels
+
+start:
+  &cause jmp
+
+effect:
+  'e' out
+  'f' out
+  'f' out
+  'e' out
+  'c' out
+  't' out
+  '\n' out
+  halt
+
+cause:
+  'c' out
+  'a' out
+  'u' out
+  's' out
+  'e' out
+  32 out
+  '-' out
+  '>' out
+  32 out
+  &effect
+  jmp

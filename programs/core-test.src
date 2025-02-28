@@ -1,0 +1,25 @@
+; To run this example using the core.src library:
+;
+;   cat tests/core-test.src tests/core.src | ./sm
+;
+
+1 outnum '+' out
+2 outnum '+' out
+3 outnum '+' out
+4 outnum '+' out
+5 outnum '=' out
+
+1 _dup +1 3 4 5
+             +
+           +
+         +
+       +
+outnum ; should be 15
+'\n' out
+
+6 outnum '*' out
+7 outnum '=' out
+6 7 * outnum ; should be 42
+'\n' out
+
+halt
