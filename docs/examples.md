@@ -243,14 +243,14 @@ Output: `0 1 1 2 3 5 8 13 21 34`
 You can run these examples using the interpret command:
 
 ```bash
-stackmachine interpret bin/testdata/hello.src
+smg interpret bin/testdata/hello.src
 ```
 
 Or compile and run them:
 
 ```bash
-stackmachine compile bin/testdata/fib.src
-stackmachine run fib.bin
+smg compile bin/testdata/fib.src
+smg run fib.bin
 ```
 
 ## Learning from Examples

@@ -33,7 +33,7 @@ This project is a Go port of the original Stack Machine created by Christian Sti
 ### Building from Source
 
 ```bash
-git clone https://github.com/matt-dunleavy/go-vm.git
+git clone https://github.com/matt-dunleavy/stackmachine-go.git
 cd go-vm
 go build -o stackmachine
 ```
@@ -51,26 +51,26 @@ Stack Machine Go has several commands:
 ### Compile Source to Bytecode
 
 ```bash
-stackmachine compile hello.src
+smg compile hello.src
 # Outputs hello.bin
 ```
 
 ### Run Compiled Bytecode
 
 ```bash
-stackmachine run hello.bin
+smg run hello.bin
 ```
 
 ### Interpret Source Code Directly
 
 ```bash
-stackmachine interpret hello.src
+smg interpret hello.src
 ```
 
 ### Disassemble Bytecode
 
 ```bash
-stackmachine disassemble hello.bin
+smg disassemble hello.bin
 ```
 
 ### Using Standard Input/Output
@@ -78,7 +78,7 @@ stackmachine disassemble hello.bin
 All commands accept input from stdin if no file is specified:
 
 ```bash
-cat hello.src | stackmachine interpret
+cat hello.src | smg interpret
 ```
 
 ## Source Code Examples

@@ -6,7 +6,7 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/matt-dunleavy/go-vm/internal/vm"
+	"github.com/matt-dunleavy/stackmachine-go/internal/vm"
 )
 
 // Compiler translates source code to machine code

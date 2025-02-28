@@ -6,8 +6,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/matt-dunleavy/go-vm/internal/vm"
-	"github.com/matt-dunleavy/go-vm/pkg/utils"
+	"github.com/matt-dunleavy/stackmachine-go/internal/vm"
+	"github.com/matt-dunleavy/stackmachine-go/pkg/utils"
 )
 
 var showHelp bool

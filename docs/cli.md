@@ -4,12 +4,12 @@ The Stack Machine provides a set of command-line tools for compiling, running, a
 
 ## Command Overview
 
-| Command     | Description                                         | Alias |
-|-------------|-----------------------------------------------------|-------|
-| compile     | Compile source code to bytecode                     | smc   |
-| run         | Execute compiled bytecode                           | smr   |
-| interpret   | Compile and execute source code in one step         | sm    |
-| disassemble | Convert bytecode back to human-readable assembly    | smd   |
+| Command     | Description                                      | Alias |
+| ----------- | ------------------------------------------------ | ----- |
+| compile     | Compile source code to bytecode                  | smc   |
+| run         | Execute compiled bytecode                        | smr   |
+| interpret   | Compile and execute source code in one step      | sm    |
+| disassemble | Convert bytecode back to human-readable assembly | smd   |
 
 ## Common Features
 
@@ -26,20 +26,22 @@ All commands share these common behaviors:
 Compiles stack machine source code to bytecode.
 
 ```bash
-stackmachine compile [file...]
+smg compile [file...]
 ```
 
 **Options:**
+
 - None specific to this command
 
 **Examples:**
+
 ```bash
 # Compile a source file to bytecode
-stackmachine compile program.src
+smg compile program.src
 # Output: program.bin
 
 # Compile from stdin to out.bin
-cat program.src | stackmachine compile
+cat program.src | smg compile
 ```
 
 ### run
@@ -47,19 +49,21 @@ cat program.src | stackmachine compile
 Executes compiled bytecode files.
 
 ```bash
-stackmachine run [file...]
+smg run [file...]
 ```
 
 **Options:**
+
 - `-h`, `--help`: Show instruction set information
 
 **Examples:**
+
 ```bash
 # Run a compiled bytecode file
-stackmachine run program.bin
+smg run program.bin
 
 # Run from stdin
-cat program.bin | stackmachine run
+cat program.bin | smg run
 ```
 
 ### interpret
@@ -67,19 +71,21 @@ cat program.bin | stackmachine run
 Compiles and executes source code in a single step.
 
 ```bash
-stackmachine interpret [file...]
+smg interpret [file...]
 ```
 
 **Options:**
+
 - None specific to this command
 
 **Examples:**
+
 ```bash
 # Interpret a source file
-stackmachine interpret program.src
+smg interpret program.src
 
 # Interpret from stdin
-cat program.src | stackmachine interpret
+cat program.src | smg interpret
 ```
 
 ### disassemble
@@ -87,19 +93,21 @@ cat program.src | stackmachine interpret
 Converts bytecode back to human-readable assembly code.
 
 ```bash
-stackmachine disassemble [file...]
+smg disassemble [file...]
 ```
 
 **Options:**
+
 - None specific to this command
 
 **Examples:**
+
 ```bash
 # Disassemble a bytecode file
-stackmachine disassemble program.bin
+smg disassemble program.bin
 
 # Disassemble from stdin
-cat program.bin | stackmachine disassemble
+cat program.bin | smg disassemble
 ```
 
 ## Input/Output Behavior
@@ -124,10 +132,10 @@ All commands can read from standard input and write to standard output:
 
 ```bash
 # Pipeline example
-stackmachine compile program.src | stackmachine disassemble
+smg compile program.src | smg disassemble
 
 # Using - as a filename to indicate stdin
-stackmachine compile - < program.src | stackmachine run -
+smg compile - < program.src | smg run -
 ```
 
 ## Error Handling

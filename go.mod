@@ -1,4 +1,4 @@
-module github.com/matt-dunleavy/go-vm
+module github.com/matt-dunleavy/stackmachine-go
 
 go 1.24.0
 

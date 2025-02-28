@@ -1,12 +1,12 @@
 #!/bin/bash
-# build.sh - Build script for govm (Go Virtual Machine)
+# build.sh - Build script for smg (Go Virtual Machine)
 
 set -e
 
 # Default values
 BUILD_MODE="dev"
 OUTPUT_DIR="bin"
-BINARY_NAME="govm"
+BINARY_NAME="smg"
 PLATFORMS=""
 VERBOSE=0
 CLEAN=0
@@ -25,7 +25,7 @@ usage() {
     echo "Options:"
     echo "  -m, --mode MODE       Build mode: dev, release (default: dev)"
     echo "  -o, --output DIR      Output directory (default: bin)"
-    echo "  -n, --name NAME       Binary name (default: govm)"
+    echo "  -n, --name NAME       Binary name (default: smg)"
     echo "  -p, --platforms LIST  Comma-separated list of platforms to build for"
     echo "                        Format: os/arch (e.g., linux/amd64,darwin/amd64)"
     echo "  -c, --clean           Clean before building"

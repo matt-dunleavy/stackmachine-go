@@ -1,5 +1,5 @@
 #!/bin/bash
-# test.sh - Test script for govm (Go Virtual Machine)
+# test.sh - Test script for smg (Go Virtual Machine)
 
 set -e
 

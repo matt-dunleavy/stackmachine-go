@@ -1,5 +1,5 @@
 #!/bin/bash
-# release.sh - Release script for govm (Go Virtual Machine)
+# release.sh - Release script for smg (Go Virtual Machine)
 
 set -e
 
